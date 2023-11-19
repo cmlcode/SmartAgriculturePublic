@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="static/justgage-1.2.2/raphael-2.1.4.min.js"></script>
+        <script src="static/justgage-1.2.2/justgage.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        
+    <div class="header d-flex justify-content-between align-items-center">
+        <h2 class="mx-auto">IoT DashBroad</h2>
+        <button id="logout-button" class="btn btn-danger" style="margin-right: 10px;">Logout</button>
+    </div>
+
+
+        
+
+    <div class="container-1">
+        
+        <div class="chart-container-1">
+            <div class="device-profile">
+                <h2>Hi I'm planting:</h2>
+                    <div id = "hint">
+                        <h3>Nothing</h3>
+                        <p>Please try Auto configure at below page to add one!</p>
+                    </div>
+                    <div id = "myImageb">
+                        <img id="myImage" src="static/image/null.png">
+                    </div>
+                    <ul>
+                        <li>Device number:#0E395C</li>
+                        
+                    </ul>
+
+                    <button id="view-plant-history">View plant history</button>
+                    <button id="change-plant-state">Change plant state</button>
+            </div>
+
+            
+        </div>
+
+        <div class="chart-container-1">
+            <div class="alerts">
+                <h2>Alerts</h2>
+                <h2 id = "alerts-number"></h2>
+                <ul id="alert-list">
+                
+                </ul>
+                
+                <button id="show-all-alerts">Show all alerts</button>
+                <div id = "pop-all-alerts" >
+                    <h2>Alerts</h2>
+                    <ul id="alert-list-all">
+                        
+                    </ul>
+                    <button class = "btn btn-primary btn-sm mx-2" id="nextPageButton">nextPage</button>
+                    <button class = "btn btn-primary btn-sm mx-2" id="prevPageButton">prevPage</button>
+                    
+                    <button class="btn btn-success mx-2" id="clear-all-alerts">Clear All Alerts</button> 
+                    <button class="btn btn-danger mx-2" id="close-all-alerts">Close</button>
+
+                    <p>Current Page: <span id="currentPage">0</span></p>
+                    <p>Total Pages: <span id="totalPage">0</span></p> 
+                </div>
+
+                <!-- <button id ="show-all-threshold">Change threshold</button> -->
+                <!-- <div id ="pop-all-threshold">
+                    
+                    <button id ="cancel-threshold-setting">Cancel</button>
+                </div> -->
+                
+                <div id="details">
+                
+                    <h2>Alert details</h2>
+                    <p id="detail-content"></p>
+                    <button id="close-details">Close</button> 
+                </div> 
+            </div>
+        </div>
+
+        <div class="chart-container-1">
+            <h2>History Data</h2>
+            <canvas id="temperatureChart"></canvas>
+            <canvas id="humidityChart"></canvas>
+
+            <button id="getHistoryData">Get History Data</button>
+            <!-- <button id="goWaterPump">Water Pump Data</button> -->
+        </div>
+        
+        <div class="chart-container-1">
+            <h2>Current Sensor Data</h2>
+            <div id="temperatureGauge"></div>
+            
+            <div id="humidityGauge"></div>
+            
+        </div>
+        
+
+        
+    </div>
+    
+    <div class="container-2">
+        <div class="test_row">
+            <!-- Name Input -->
+            <div class="col-6">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="autofillObject">
+            </div>
+            <!-- Auto Config Button -->
+            <div class="col-6">
+                <label>&nbsp;</label> <!-- Spacer -->
+                <button class="btn btn-primary form-control" id="autoConfig">Auto Config</button>
+            </div>
+        </div>
+        
+
+        <div class="test_row">
+            <!-- High Temperature Input -->
+            <div class="col-3">
+                <label for="high_temp">Temperature from</label>
+                <input type="text" class="form-control" id="low_temp">
+            </div>
+            <div class="col-1">
+                <label>&nbsp;</label> <!-- Spacer -->
+                <input type="text" class="form-control" placeholder="°C">
+            </div>
+
+            <!-- Low Temperature Input -->
+            <div class="col-3">
+                <label for="low_temp">To</label>
+                <input type="text" class="form-control" id="high_temp">
+            </div>
+            <div class="col-1">
+                <label>&nbsp;</label> <!-- Spacer -->
+                <input type="text" class="form-control" placeholder="°C">
+            </div>
+        </div>
+
+        <div class="test_row">
+            <!-- High Humidity Input -->
+            <div class="col-3">
+                <label for="high_humidity">Humidity from</label>
+                <input type="text" class="form-control" id="low_humidity">
+            </div>
+            <div class="col-1">
+                <label>&nbsp;</label> <!-- Spacer -->
+                <input type="text" class="form-control" placeholder="%">
+            </div>
+
+            <!-- Low Humidity Input -->
+            <div class="col-3">
+                <label for="low_humidity">To</label>
+                <input type="text" class="form-control" id="high_humidity">
+            </div>
+            <div class="col-1">
+                <label>&nbsp;</label> <!-- Spacer -->
+                <input type="text" class="form-control" placeholder="%">
+            </div>
+        </div>
+
+        <div class="test_row">
+            <!-- Description Input -->
+            <div class="col_for_description">
+                <label for="description">Description</label>
+                <textarea id = "description"></textarea>
+            </div>
+            <button class="btn btn-success form-control" style="margin-top: 16px;" id ="configApplybtn">Apply</button> 
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 5047</p>
+    </div>
+    <script src="/static/script.js"></script>
+    </body>
+</html>
