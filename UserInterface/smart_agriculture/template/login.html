@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Add your custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+        }
+        .footer {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logincontainer {
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2 class="text-center">IoT Login</h2>
+    </div>
+
+    <div class="container">
+        <div class="logincontainer">
+            <h2 class="text-center">Device Identify Code</h2>
+            <form method="post">
+                <div class="form-group text-center">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" id="product-code" name="product-code" placeholder="Enter Unique Device Identify Code">
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary" id="login-button">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p class="text-center">&copy; 2023 5047</p>
+    </div>
+    <script src="/static/login.js"></script>
+</body>
+</html>
