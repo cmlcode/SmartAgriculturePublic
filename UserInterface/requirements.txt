@@ -1,4 +1,4 @@
-aiohttp==3.8.6
+aiohttp==3.9.0
 aiomqtt==1.2.1
 aioschedule==0.5.2
 aiosignal==1.3.1
